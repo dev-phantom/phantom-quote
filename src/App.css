@@ -16,12 +16,12 @@ body{
     width: 100%;
 }
 .title{
-    font-size: 55px;
+    font-size: 30px;
     padding: 2rem 0;
     font-family: tesla;
 
 }
 .quote{
-    color: #272727;
+    color: #fff;
     font-size: 30px;
 }
