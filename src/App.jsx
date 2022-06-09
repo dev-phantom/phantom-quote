@@ -1,43 +1,28 @@
-import { useState, useEffect } from 'react';
-import './App.css';
-import BlogItem from "./components/BlogItem"
+import { useState, useEffect } from "react";
+import BlogItems from "./components/BlogItem";
+import './App.css'
 
-function App() {
-  const [blogs, setBlogs] = useState([])
-  const options = {
-    method: 'GET',
-    headers: {
-      // 'X-User-Agent': 'desktop',
-      // 'X-Proxy-Location': 'EU',
-      'X-RapidAPI-Host': 'google-search3.p.rapidapi.com',
-      'X-RapidAPI-Key': '0365729f63msha04ad92a6eef408p18126cjsn8da0f1f3166c'
-    }
+
+export default function App() {
+  const [joke, setJoke] = useState([]);
+
+
+  const fetchData = async () => {
+    const getData = await fetch('https://goquotes-api.herokuapp.com/api/v1/all/quotes');
+    const data = await getData.json();
+    console.log(data);
+    var quote = data.quotes;
+    let randomQuote = quote[Math.floor(Math.random()*quote.length)];
+    setJoke(randomQuote);
   };
-  
-const fetchData = () =>{
-  fetch('https://google-search3.p.rapidapi.com/api/v1/search/q=elon+musk', options)
-  .then(response => response.json())
-  .then(data =>{
-    console.log(data)
-    setBlogs(data)
-
-  })
-  .catch(err => console.error(err));
-  }
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   return (
-    <>
-  {blogs.length > 0 && (
-    blogs.map((blog) => (
-      <BlogItem blog={blog.results} key={blog.ts}/>
-    ))
-  )}
-  </>
-  )
+    <div className="App">
+      <BlogItems joke={joke}/>
+    </div>
+  );
 }
-
-export default App

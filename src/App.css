@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+@font-face {
+    font-family: tesla;
+    src: url(./assets/TESLA.ttf);
+}
+body{
+    background-color: #272727;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 2rem;
+    width: 100%;
+}
+.title{
+    font-size: 55px;
+    padding: 2rem 0;
+    font-family: tesla;
+
+}
+.quote{
+    color: #272727;
+    font-size: 30px;
+}
