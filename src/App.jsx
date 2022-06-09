@@ -9,20 +9,26 @@ export default function App() {
   const [joke, setJoke] = useState([]);
 
 let quote, randomQuote;
-
+ 
   const fetchData = async () => {
     const getData = await fetch('https://goquotes-api.herokuapp.com/api/v1/all/quotes');
     const data = await getData.json();
     quote = data.quotes;
     randomQuote = quote[Math.floor(Math.random()*quote.length)];
     setJoke(randomQuote);
-  }
 
+
+  }
+ let geta = () =>{
+   fetchData();
+  }
   useEffect(() => {
-    fetchData();
+    geta();
     setTimeout(() => {
       setIsPending(false);
     }, 5000);
+    fetchData()
+
     setInterval(() => {
       fetchData()
     }, 30000);
@@ -35,7 +41,7 @@ let quote, randomQuote;
           <Loader />
         </div>
       )}
-      <BlogItems joke={joke}/>
+      <BlogItems joke={joke} geta={geta}/>
 
     </div>
   );

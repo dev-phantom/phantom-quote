@@ -50,3 +50,16 @@ body{
     font-size: 25px;
     text-transform: capitalize;
 }
+button{
+    width: 60%;
+    height: 3rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    background: chartreuse;
+    outline: none;
+    border: none;
+    color: #000;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-top: 2rem;
+}
